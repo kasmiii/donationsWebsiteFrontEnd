@@ -1,0 +1,14 @@
+<p>first works!</p>
+
+<h1>First Component</h1>
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<nav>
+  <ul>
+    <li><a routerLink="child-a" >child A</a></li>
+    <li><a routerLink="child-b" >child B</a></li>
+    <li><a [routerLink]="['/heroDetails',id]" routerLinkActive="router-link-active"></a> </li>
+    <li><a routerLink="../second-component" >second-component</a> </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>

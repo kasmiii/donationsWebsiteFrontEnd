@@ -1,0 +1,70 @@
+<!--<script>
+    $(document).ready(function(){
+        $('input[type="checkbox"]').click(function(){
+            if($(this).prop("checked") == true){
+                console.log("Checkbox is checked.");
+                $('#associationForm').css('display','block');
+            }
+            else if($(this).prop("checked") == false){
+                console.log("Checkbox is unchecked.");
+                $('#associationForm').css('display','none');
+            }
+        });
+    });
+</script>
+-->
+<script>
+    $(document).ready(function(){
+    $('#associator').click(function(){
+        if($(this).prop("checked") == true){
+                //$("#result").html("Checkbox is checked.");
+                console.log("is checked...");
+            }
+            else if($(this).prop("checked") == false){
+                //$("#result").html("Checkbox is unchecked.");
+                console.log("is not checked...");
+            }
+        });
+    });
+    
+</script>
+
+<form class="bootstrap-form-with-validation" id="signup-box">
+    <h2 class="text-center">Sign Up Now !</h2>
+    <div class="form-group"><label for="text-input">CIN :</label><input class="form-control" type="text" name="" id="text-input"></div>
+    <div class="form-group"><label for="password-input">Nom :</label><input class="form-control" type="text" name="" id="password-input"></div>
+    <div class="form-group"><label for="email-input">Prenom :</label><input class="form-control" type="text" name="" id="email-input"></div>
+    <div class="form-group"><label for="textarea-input">Adresse </label><textarea class="form-control" name="textarea" id="textarea-input"></textarea></div>
+    <div class="form-group"><label for="email-input">Telehone :</label><input class="form-control" type="text" name="" id=""></div>
+    <div class="form-group"><label for="username">Username :</label><input class="form-control" type="text" name="" id="email-input"></div>
+    <div class="form-group"><label for="password">Password :</label><input class="form-control" type="text" name="" id="email-input"></div>
+    
+    <div class="form-group">
+        <input type="checkbox" name="checkbox-associator" class="form-check-input" id="associator" (change)="toggleEditable($event)"/>
+        <label class="form-check-label" for="associator">I'm Associator</label>
+    </div>
+
+    <div class="form-group">
+        <label for="email-input">Are you ?</label>
+        <div class="form-check"><input class="form-check-input" type="radio" name="radio-group" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Donateur</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="radio-group" checked="" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Demandeur</label></div>
+    </div>
+    <div id="associationForm" style="display: none;">
+    <div class="form-group">
+        <label for="password">Nom Association :</label><input class="form-control" type="text" name="" id="email-input">
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Adresse Locale :</label><input class="form-control" type="text" name="" id="adresse">
+    </div>
+    </div>
+
+    <div class="form-group"><button class="btn btn-primary" type="submit">Button</button></div>
+</form>
+
+<script src="./assets/js/jquery.min.js"></script>
+<script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="./assets/js/smoothproducts.min.js"></script>
+<script src="./assets/js/theme.js"></script>
+<script src="./assets/js/appearence.js"></script>
