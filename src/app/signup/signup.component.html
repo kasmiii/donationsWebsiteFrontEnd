@@ -1,65 +1,80 @@
-<!--<script>
-    $(document).ready(function(){
-        $('input[type="checkbox"]').click(function(){
-            if($(this).prop("checked") == true){
-                console.log("Checkbox is checked.");
-                $('#associationForm').css('display','block');
-            }
-            else if($(this).prop("checked") == false){
-                console.log("Checkbox is unchecked.");
-                $('#associationForm').css('display','none');
-            }
-        });
-    });
-</script>
--->
-<script>
-    $(document).ready(function(){
-    $('#associator').click(function(){
-        if($(this).prop("checked") == true){
-                //$("#result").html("Checkbox is checked.");
-                console.log("is checked...");
-            }
-            else if($(this).prop("checked") == false){
-                //$("#result").html("Checkbox is unchecked.");
-                console.log("is not checked...");
-            }
-        });
-    });
-    
-</script>
-
-<form class="bootstrap-form-with-validation" id="signup-box">
+<form #personneForm="ngForm" (ngSubmit)="onSubmitPersonne(personneForm)"  class="bootstrap-form-with-validation" id="signup-box">
     <h2 class="text-center">Sign Up Now !</h2>
-    <div class="form-group"><label for="text-input">CIN :</label><input class="form-control" type="text" name="" id="text-input"></div>
-    <div class="form-group"><label for="password-input">Nom :</label><input class="form-control" type="text" name="" id="password-input"></div>
-    <div class="form-group"><label for="email-input">Prenom :</label><input class="form-control" type="text" name="" id="email-input"></div>
-    <div class="form-group"><label for="textarea-input">Adresse </label><textarea class="form-control" name="textarea" id="textarea-input"></textarea></div>
-    <div class="form-group"><label for="email-input">Telehone :</label><input class="form-control" type="text" name="" id=""></div>
-    <div class="form-group"><label for="username">Username :</label><input class="form-control" type="text" name="" id="email-input"></div>
-    <div class="form-group"><label for="password">Password :</label><input class="form-control" type="text" name="" id="email-input"></div>
     
+    <div class="form-group">
+        <label for="text-input">CIN :</label>
+        <input class="form-control" type="text" name="mCin" id="mCin" ngModel required>
+    </div>
+    <div class="form-group">
+        <label for="password-input">Nom :</label>
+        <input class="form-control" type="text" name="mNom" id="mNom" ngModel required>
+    </div>
+    <div class="form-group">
+        <label for="email-input">Prenom :</label>
+        <input class="form-control" type="text" name="mPrenom" id="mPrenom" ngModel required>
+    </div>
+    <div class="form-group">
+        <label for="textarea-input">Adresse </label>
+        <textarea class="form-control" name="mAdresse" id="textarea-input"  ngModel required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="email-input">Telehone :</label>
+        <input class="form-control" type="text" name="mTelephone" id="mTelephone" ngModel required>
+    </div>
+    <div class="form-group">
+        <label for="username">Username :</label>
+        <input class="form-control" type="text" name="mUsername" id="mUsername" ngModel required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password :</label>
+        <input class="form-control" type="password" name="mPassword" id="mPassword" ngModel required>
+    </div>
     <div class="form-group">
         <input type="checkbox" name="checkbox-associator" class="form-check-input" id="associator" (change)="toggleEditable($event)"/>
         <label class="form-check-label" for="associator">I'm Associator</label>
     </div>
-
+    <!--type of User-->
     <div class="form-group">
         <label for="email-input">Are you ?</label>
-        <div class="form-check"><input class="form-check-input" type="radio" name="radio-group" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Donateur</label></div>
-        <div class="form-check"><input class="form-check-input" type="radio" name="radio-group" checked="" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Demandeur</label></div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="id_dem" name="typePersonne" value="donateur" ngModel (change)="onItemChange($event.target)">
+            <label class="form-check-label" id="id_don" for="formCheck-6">Donateur</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="typePersonne" value="demandeur" ngModel (change)="onItemChange($event.target)">
+            <label class="form-check-label" for="formCheck-7">Demandeur</label>
+        </div>
     </div>
     <div id="associationForm" style="display: none;">
     <div class="form-group">
-        <label for="password">Nom Association :</label><input class="form-control" type="text" name="" id="email-input">
+        <label for="password">Nom Association :</label><input class="form-control" type="text" name="mNomAssociation" id="nomAssociation_id" ngModel>
     </div>
     
     <div class="form-group">
-        <label for="password">Adresse Locale :</label><input class="form-control" type="text" name="" id="adresse">
+        <label for="adresseAssociation">Adresse Locale :</label><input class="form-control" type="text" name="mAdresseLocale" id="adresseAssociation" ngModel>
+    </div>
+    </div>
+    <div *ngIf="currentFile" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped"
+    role="progressbar"
+    attr.aria-valuenow="{{ progress }}"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    [ngStyle]="{ width: progress + '%' }"
+    >
+    {{ progress }}%
     </div>
     </div>
 
-    <div class="form-group"><button class="btn btn-primary" type="submit">Button</button></div>
+    <div class="form-group">
+        <label for="file-input">Image</label>
+        <input type="file" name="mImage" id="image" accept=".jpg" ngModel (change)="selectFile($event)" required/>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]="!personneForm.form.valid" (click)="upload()">Button</button>
+    </div>
+    <div class="alert alert-light" role="alert">{{ message }}</div>
 </form>
 
 <script src="./assets/js/jquery.min.js"></script>
