@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SuccessComponent } from './success/success.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'second-component', component: SecondComponent,canActivate:[GuardGuard] },
   {path:'home',component:HomeComponent},
   {path:'signup',component:SignupComponent},
+  {path:'success',component:SuccessComponent},
   {path:'login',component:LoginComponent},
   {path:'',redirectTo:'/home',pathMatch:'full'},
   {path:'**',component:PageNotFoundComponent}

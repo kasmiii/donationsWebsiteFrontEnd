@@ -1,5 +1,5 @@
 <form #personneForm="ngForm" (ngSubmit)="onSubmitPersonne(personneForm)"  class="bootstrap-form-with-validation" id="signup-box">
-    <h2 class="text-center">Sign Up Now !</h2>
+    <h2 class="text-center">Sign Up Now !</h2><!--onSubmitPersonne(personneForm)-->
     
     <div class="form-group">
         <label for="text-input">CIN :</label>
@@ -69,10 +69,12 @@
     <div class="form-group">
         <label for="file-input">Image</label>
         <input type="file" name="mImage" id="image" accept=".jpg" ngModel (change)="selectFile($event)" required/>
+        <button class="btn btn-danger" (click)="upload()">upload</button>
     </div>
 
     <div class="form-group">
-        <button class="btn btn-primary" type="submit" [disabled]="!personneForm.form.valid" (click)="upload()">Button</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!personneForm.form.valid">Button</button>
+        <!--<button class="btn btn-primary" (click)="upload()">upload</button>-->
     </div>
     <div class="alert alert-light" role="alert">{{ message }}</div>
 </form>
