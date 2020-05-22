@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
@@ -10,6 +10,11 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SuccessComponent } from './success/success.component';
+import { DonationsComponent } from './donations/donations.component';
+import { EspaceDemandeurComponent } from './espace-demandeur/espace-demandeur.component';
+import { MesdemandesComponent } from './mesdemandes/mesdemandes.component';
+import { EffectuerdemandeComponent } from './effectuerdemande/effectuerdemande.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -27,12 +32,60 @@ const routes: Routes = [
   ] 
 
 },
+
   {path: 'second-component', component: SecondComponent,canActivate:[GuardGuard] },
-  {path:'home',component:HomeComponent},
-  {path:'signup',component:SignupComponent},
-  {path:'success',component:SuccessComponent},
-  {path:'login',component:LoginComponent},
-  {path:'',redirectTo:'/home',pathMatch:'full'},
+
+  {path:'donations',component:DonationsComponent,
+  children:[
+    {
+      path:'home',
+      component:HomeComponent
+    },
+    {
+      path:'signup',
+      component:SignupComponent
+    },
+    {
+      path:'login',
+      component:LoginComponent
+    },
+    {
+      path:'success',
+      component:SuccessComponent
+    }
+  ]
+  },
+
+  {
+      path:'espaceDemandeur',component:EspaceDemandeurComponent,
+      children:[
+      {
+        path:'mesDemandes',
+        component:MesdemandesComponent
+      },
+      {
+        path:'effectuerDemande',
+        component:EffectuerdemandeComponent
+      }
+      ],
+      canActivate:[AuthGuardService]
+  },
+
+  {
+    path:'espaceDonateur',component:EspaceDemandeurComponent,
+    children:[
+    {
+      path:'mesDonations',
+      component:MesdemandesComponent
+    },
+    {
+      path:'demandes',
+      component:EffectuerdemandeComponent
+    }
+    ],
+    canActivate:[AuthGuardService]
+  },
+  {path:'',redirectTo:'/donations/home',pathMatch:'full'},
   {path:'**',component:PageNotFoundComponent}
 ];
 

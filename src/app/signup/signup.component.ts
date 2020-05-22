@@ -111,7 +111,7 @@ public upload() {
       } else if (event instanceof HttpResponse) {
         this.message = event.body.message;
         this.fileInfos = this.uploadService.getFiles();
-        this.router.navigate(['/success']);
+        this.router.navigate(['../success']);
         //console.log("you have been enregistered successfully...");
       }
     },

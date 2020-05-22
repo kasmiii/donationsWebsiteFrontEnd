@@ -22,8 +22,13 @@
         class="submit-row" style="margin-bottom:8px;padding-top:0px;">
         <button class="btn btn-primary btn-block box-shadow" type="submit" id="submit-id-submit" [disabled]="!loginForm.form.valid">Login</button>
         <div class="d-flex justify-content-between">
-            <div class="form-check form-check-inline" id="form-check-rememberMe"><input class="form-check-input" type="checkbox" name="check" id="formCheck-1" for="remember" style="cursor:pointer;"><label class="form-check-label" for="formCheck-1"><span class="label-text">Remember Me</span></label></div><a href="#"
-                id="forgot-password-link">Forgot Password?</a></div>
+            <div class="form-check form-check-inline" id="form-check-rememberMe">
+                <input class="form-check-input" type="checkbox" name="check" id="formCheck-1" for="remember" style="cursor:pointer;">
+                <label class="form-check-label" for="formCheck-1"><span class="label-text">Remember Me</span></label>
+                <p *ngIf="!isAuthenticated" style="color: red;">the login or password are incorrect</p>
+            </div>
+            <a href="#"  id="forgot-password-link">Forgot Password?</a>
+        </div>
 </div>
 <div id="login-box-footer" style="padding:10px 20px;padding-bottom:23px;padding-top:18px;">
     <p style="margin-bottom:0px;">Don't you have an account?<a [routerLink]="['/signup']" routerLinkActive="router-link-active"  id="register-link">Sign Up!</a></p>

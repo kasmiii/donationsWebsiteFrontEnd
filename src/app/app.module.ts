@@ -13,6 +13,11 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SuccessComponent } from './success/success.component';
+import { EspaceDemandeurComponent } from './espace-demandeur/espace-demandeur.component';
+import { DonationsComponent } from './donations/donations.component';
+import { MesdemandesComponent } from './mesdemandes/mesdemandes.component';
+import { EffectuerdemandeComponent } from './effectuerdemande/effectuerdemande.component';
+import { EspacedonateurComponent } from './espacedonateur/espacedonateur.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { SuccessComponent } from './success/success.component';
     SignupComponent,
     LoginComponent,
     PageNotFoundComponent,
-    SuccessComponent
+    SuccessComponent,
+    EspaceDemandeurComponent,
+    DonationsComponent,
+    MesdemandesComponent,
+    EffectuerdemandeComponent,
+    EspacedonateurComponent
   ],
   imports: [
     BrowserModule,

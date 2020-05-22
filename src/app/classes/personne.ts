@@ -14,14 +14,12 @@ export class Personne {
         public mAssociation:Association
     ){}
 
-    
     public setAssociation(association:Association) {
         this.mAssociation=association;
     }
 
     public getAssociation(){
-            return this.mAssociation;
+        return this.mAssociation;
     }
-
 
 }
