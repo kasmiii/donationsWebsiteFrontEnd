@@ -18,6 +18,19 @@ import { DonationsComponent } from './donations/donations.component';
 import { MesdemandesComponent } from './mesdemandes/mesdemandes.component';
 import { EffectuerdemandeComponent } from './effectuerdemande/effectuerdemande.component';
 import { EspacedonateurComponent } from './espacedonateur/espacedonateur.component';
+import { MesDonationsComponent } from './mes-donations/mes-donations.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MenubarModule} from 'primeng/menubar';
+//import {MenuItem} from 'primeng/api';
+import { DemandesComponent } from './demandes/demandes.component';
+import {CommonModule} from '@angular/common';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
+import {TabViewModule} from 'primeng/tabview';
+import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {TabMenuModule} from 'primeng/tabmenu';
+import {TieredMenuModule} from 'primeng/tieredmenu';
+import {MenuItem} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -35,13 +48,27 @@ import { EspacedonateurComponent } from './espacedonateur/espacedonateur.compone
     DonationsComponent,
     MesdemandesComponent,
     EffectuerdemandeComponent,
-    EspacedonateurComponent
+    EspacedonateurComponent,
+    MesDonationsComponent,
+    DemandesComponent
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MenubarModule,
+    CommonModule,
+    MenubarModule,
+    InputTextModule,
+    ButtonModule,
+    TabViewModule,
+    CodeHighlighterModule,
+    TabMenuModule,
+    TieredMenuModule,
+    //MenuItem
   ],
   providers: [],
   bootstrap: [AppComponent]

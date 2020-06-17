@@ -35,15 +35,17 @@ export class PersonneService {
     });
   }
 
-  login(login:Login):Observable<Personne>{
+  signIn(login:Login):Observable<Personne>{
     const headers={
       headers:new HttpHeaders({
         'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token'
+        'Authorization': 'my-auth-token'
       })
     }
 
-    return this.http.post<Personne>(this.baseUrl+"/signin",login,headers);
+    return this.http.post<Personne>(this.baseUrl+"/signin",login,{
+      responseType: 'json'
+    });
   }
 
 }

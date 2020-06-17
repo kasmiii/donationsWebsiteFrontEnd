@@ -6,6 +6,7 @@ import { Personne } from '../classes/personne';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { Global } from '../classes/global';
+import { log } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ import { Global } from '../classes/global';
 export class LoginComponent implements OnInit {
 
   public isAuthenticated;
+  public personne:Personne;
 
   constructor(private personneService:PersonneService,private authentication:AuthenticationService,private router:Router) { }
 
@@ -25,13 +27,19 @@ export class LoginComponent implements OnInit {
   onSubmitLogin(loginForm:NgForm){
     
       var login=new Login(loginForm.value.login,loginForm.value.password);  
-      this.personneService.login(login).subscribe(
+      this.personneService.signIn(login).subscribe(
           (personne:Personne)=>{
             if(this.authentication.authenticate(personne)){
               this.isAuthenticated=true;
-              //if(Global.type==="Personne")
-              this.router.navigate(['/espaceDemandeur/mesDemandes'])
-              console.log("the user loged in is:  "+Global.username);
+              this.personne=personne;
+              console.log("personne type is :"+personne.mType);
+              
+              if(personne.mType==="demandeur"){
+                this.router.navigate(['/espaceDemandeur/effectuerDemande']);
+              }
+              else {
+                this.router.navigate(['/espaceDonateur/mesDonations']);
+              }
             }
             this.isAuthenticated=false;
           },

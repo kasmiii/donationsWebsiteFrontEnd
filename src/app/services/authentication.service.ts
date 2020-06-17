@@ -8,7 +8,6 @@ import { Global } from '../classes/global';
 })
 export class AuthenticationService {
 
-  
   constructor() { }
 
   authenticate(personne:Personne) {

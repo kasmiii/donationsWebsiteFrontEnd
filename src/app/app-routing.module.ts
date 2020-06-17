@@ -15,6 +15,9 @@ import { EspaceDemandeurComponent } from './espace-demandeur/espace-demandeur.co
 import { MesdemandesComponent } from './mesdemandes/mesdemandes.component';
 import { EffectuerdemandeComponent } from './effectuerdemande/effectuerdemande.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { MesDonationsComponent } from './mes-donations/mes-donations.component';
+import { EspacedonateurComponent } from './espacedonateur/espacedonateur.component';
+import { DemandesComponent } from './demandes/demandes.component';
 
 
 const routes: Routes = [
@@ -60,7 +63,7 @@ const routes: Routes = [
       path:'espaceDemandeur',component:EspaceDemandeurComponent,
       children:[
       {
-        path:'mesDemandes',
+        path:'mesDamandes',
         component:MesdemandesComponent
       },
       {
@@ -72,19 +75,20 @@ const routes: Routes = [
   },
 
   {
-    path:'espaceDonateur',component:EspaceDemandeurComponent,
+    path:'espaceDonateur',component:EspacedonateurComponent,
     children:[
     {
       path:'mesDonations',
-      component:MesdemandesComponent
+      component:MesDonationsComponent
     },
     {
       path:'demandes',
-      component:EffectuerdemandeComponent
+      component:DemandesComponent
     }
     ],
     canActivate:[AuthGuardService]
   },
+  
   {path:'',redirectTo:'/donations/home',pathMatch:'full'},
   {path:'**',component:PageNotFoundComponent}
 ];
