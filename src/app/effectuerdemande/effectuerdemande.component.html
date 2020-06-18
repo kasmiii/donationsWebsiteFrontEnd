@@ -1,1 +1,157 @@
-<p>effectuerdemande works!</p>
+<h3>Demandez maintenant,Choisissez le type de l'objet que vous souhaitez demander !</h3>
+<div class="p-formgroup-inline">
+    <div class="p-field-checkbox">
+        <input type="radio" name="type" value="livre"  inputId="livre" (click)="getTypeHandler($event)" selected="true"/>
+        <label for="livre">Livre</label>
+    </div>
+    <div class="p-field-checkbox">
+        <input type="radio" name="type" value="vetement"  inputId="vetement" (click)="getTypeHandler($event)"/>
+        <label for="vetement">Vetement</label>
+    </div>
+    <div class="p-field-checkbox">
+        <input type="radio" name="type" value="machine"  inputId="machine" (click)="getTypeHandler($event)"/>
+        <label for="machine">Machine</label>
+    </div>
+</div>
+<!-------------------------------------------Livre Formulaire--------------------------------->
+<div id="livreForm" >
+    <p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<form [formGroup]="livreform" (ngSubmit)="onSubmitLivre(livreform)" >
+    <p-panel header="Livre">
+        <div class="p-fluid forms-grid" style="margin: 1em 0">
+            <div>
+                <div>Titre du Livre *</div>
+                <input pInputText type="text" formControlName="titre" placeholder="Titre du Livre"/>
+                <p-message severity="error" text="title of book is required" *ngIf="!livreform.controls['titre'].valid&&livreform.controls['titre'].dirty"></p-message>
+            </div>
+            
+            <div>
+                <div>Nom de l'auteur *</div>
+                <input pInputText type="text" formControlName="nomAuteur" placeholder="nom de l'auteur"/>
+                <p-message severity="error" [text]="livreform.controls['nomAuteur'].errors['required'] ? 'Password is required' : livreform.controls['password'].errors['minlength'] ? 'Must be longer than 6 characters' : ''" 
+                *ngIf="!livreform.controls['nomAuteur'].valid&&livreform.controls['nomAuteur'].dirty"></p-message>
+            </div>
+            <div>
+                <div>Categorie du livre *</div>
+                <select class="form-control" id="categorielivre" formControlName="categorielivre">
+                    <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                </select>
+                <!--<p-message severity="error" text="Category of Book is required" *ngIf="!livreform.controls['categorielivre'].valid&&livreform.controls['categorielivre'].dirty"></p-message>-->
+            </div>
+            <div>
+                <div>Description *</div>
+                <textarea rows="rows" cols="cols" pInputTextarea name="descriptionlivre" id="descriptionlivre" placeholder="describe your object"></textarea>
+                <p-message severity="error" [text]="livreform.controls['descriptionlivre'].errors['required'] ? 'Description is required' : livreform.controls['description'].errors['minlength'] ? 'Must be longer than 6 characters' : ''" 
+                *ngIf="!livreform.controls['descriptionlivre'].valid&&livreform.controls['descriptionlivre'].dirty"></p-message>
+            </div>
+            <div *ngIf="isAssociator==='true'" class="p-col-12 p-md-3">
+                <div>Quantite *</div>
+                <input type="number" formControlName="quantity"/>
+            </div>
+            <div>
+                <button pButton type="submit" label="Submit" [disabled]="!livreform.valid"></button>
+            </div>
+
+            <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+                Form Submitted
+                <br>
+                {{diagnostic}}
+            </div>
+        </div>
+    </p-panel>
+</form>
+</div>
+<!-----------------------------------machine Formulaire------------------------------->
+
+    <div id="machineForm" style="display: none;">
+    <p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<form [formGroup]="machineform" (ngSubmit)="onSubmitMachine(machineform)" >
+    <p-panel header="Machine">
+        <div class="p-fluid forms-grid" style="margin: 1em 0">
+            <div>
+                <div>Nom de la machine *</div>
+                <input pInputText type="text" formControlName="nomMachine" placeholder="nom de la machine"/>
+                <p-message severity="error" text="Name of machine is required" *ngIf="!machineform.controls['nomMachine'].valid&&machineform.controls['nomMachine'].dirty"></p-message>
+            </div>
+            
+            <div>
+                <div>Type de la machine *</div>
+                <select class="form-control" id="typeMachine" formControlName="typeMachine">
+                    <option *ngFor="let category of typesmachines" [value]="category">{{category}}</option>
+                </select>
+                <!--<p-message severity="error" text="Category of Book is required" *ngIf="!livreform.controls['categorielivre'].valid&&livreform.controls['categorielivre'].dirty"></p-message>-->
+            </div>
+            <div>
+                <div>Description *</div>
+                <textarea rows="rows" cols="cols" pInputTextarea name="descriptionmachine" id="descriptionmachine" placeholder="describe your object"></textarea>
+                <p-message severity="error" [text]="machineform.controls['descriptionmachine'].errors['required'] ? 'Description is required' : livreform.controls['descriptionmachine'].errors['minlength'] ? 'Must be longer than 6 characters' : ''" 
+                *ngIf="!machineform.controls['descriptionmachine'].valid&&machineform.controls['descriptionmachine'].dirty"></p-message>
+            </div>
+            <div *ngIf="isAssociator==='true'" class="p-col-12 p-md-3">
+                <div>Quantite *</div>
+                <input type="number" formControlName="quantity"/>
+            </div>
+            <div>
+                <button pButton type="submit" label="Submit" ></button><!--[disabled]="!machineform.valid"-->
+            </div>
+
+            <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+                Form Submitted
+                <br>
+                {{diagnostic}}
+            </div>
+        </div>
+    </p-panel>
+</form>
+</div>
+
+<!----------------------------------vetement Formulaire---------------------------------------->
+<div id="vetementForm" style="display: none;">
+    <p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<form [formGroup]="vetementform" (ngSubmit)="onSubmitVetement(vetementform)" >
+    <p-panel header="Vetement">
+        <div class="p-fluid forms-grid" style="margin: 1em 0">
+            <div>
+                <div>Categorie du vetement *</div>
+                <select class="form-control" id="categorieVetement" formControlName="categorieVetement">
+                    <option *ngFor="let category of categoriesVetement" [value]="category">{{category}}</option>
+                </select>
+                <!--<p-message severity="error" [text]="vetementform.controls['categorieVetement'].errors['required'] ? 'Category of dress is required' : vetementform.controls['categorieVetement'].errors['minlength'] ? 'Must be longer than 6 characters' : ''" 
+                *ngIf="!vetementform.controls['categorieVetement'].valid&&vetementform.controls['categorieVetement'].dirty"></p-message>-->
+            </div>
+            
+            <div>
+                <div>Taille du vetement *</div>
+                <select class="form-control" id="tailleVetement" formControlName="tailleVetement">
+                    <option *ngFor="let category of sizes" [value]="category">{{category}}</option>
+                </select>
+                <!--<p-message severity="error" [text]="vetementform.controls['tailleVetement'].errors['required'] ? 'Size of dress is required' : vetementform.controls['tailleVetement'].errors['minlength'] ? 'Must be longer than 6 characters' : ''" 
+                *ngIf="!vetementform.controls['tailleVetement'].valid&&vetementform.controls['tailleVetement'].dirty"></p-message>-->
+            </div>
+            
+            <div>
+                <div>Description *</div>
+                <textarea rows="rows" cols="cols" pInputTextarea name="descriptionvetement" id="descriptionvetement" placeholder="describe your object"></textarea>
+                <p-message severity="error" [text]="vetementform.controls['descriptionvetement'].errors['required'] ? 'Description is required' : vetementform.controls['description'].errors['minlength'] ? 'Must be longer than 6 characters' : ''" 
+                *ngIf="!vetementform.controls['descriptionvetement'].valid&&vetementform.controls['descriptionvetement'].dirty"></p-message>
+            </div>
+            <div *ngIf="isAssociator==='true'" class="p-col-12 p-md-3">
+                <div>Quantite *</div>
+                <input type="number" formControlName="quantity"/>
+            </div>
+            <div>
+                <button pButton type="submit" label="Submit" [disabled]="!vetementform.valid"></button>
+            </div>
+
+            <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+                Form Submitted
+                <br>
+                {{diagnostic}}
+            </div>
+        </div>
+    </p-panel>
+</form>
+</div>

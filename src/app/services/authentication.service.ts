@@ -17,7 +17,18 @@ export class AuthenticationService {
       sessionStorage.setItem('username', personne.mUsername);
       Global.username=sessionStorage.getItem('username');
       sessionStorage.setItem('type',personne.mType);
-      Global.type=sessionStorage.getItem('type');      
+      Global.type=sessionStorage.getItem('type');
+      if(personne.mAssociation!==null){
+        sessionStorage.setItem('isAssociator','true');
+        sessionStorage.setItem('libelleAssociation',personne.mAssociation.mLibelleAssociation);
+        Global.libelleAssociation=sessionStorage.getItem('libelleAssociation');
+      }
+      else{
+        sessionStorage.setItem('isAssociator','false');
+      }
+    
+      Global.isAssociator=sessionStorage.getItem('isAssociator');
+      //sessionStorage.setItem();      
       return true;
     } 
     

@@ -14,11 +14,11 @@ export class Personne {
         public mAssociation:Association
     ){}
 
-    public setAssociation(association:Association) {
+     setAssociation(association:Association):void {
         this.mAssociation=association;
     }
 
-    public getAssociation(){
+     getAssociation():Association{
         return this.mAssociation;
     }
 

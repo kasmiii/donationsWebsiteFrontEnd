@@ -1,14 +1,9 @@
 <div class="p-grid">
 
     <div class="p-col-8">
-<p-tabMenu [model]="items" [activeItem]="activeItem">
-    <!--<input type="text" pInputText placeholder="Search">-->
-
-    <!--<button #btn type="button" pButton icon="pi pi-bars" label="jhhjhjhhjhjh" (click)="menu.toggle($event)"></button>
-    <p-tieredMenu #menu [model]="items1" [popup]="true"></p-tieredMenu>
-    <button pButton  icon="pi pi-power-off">Logout</button>-->
-</p-tabMenu>
+<p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
 </div>
+
 <div class="p-col-4">
 <button #btn type="button" pButton icon="pi pi-bars" [label]="username" (click)="menu.toggle($event)"></button>
 <p-tieredMenu #menu [model]="items1" [popup]="true"></p-tieredMenu>

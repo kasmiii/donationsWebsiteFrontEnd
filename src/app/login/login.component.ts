@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
               this.isAuthenticated=true;
               this.personne=personne;
               console.log("personne type is :"+personne.mType);
-              
+              console.log("associated?"+Global.isAssociator);
               if(personne.mType==="demandeur"){
                 this.router.navigate(['/espaceDemandeur/effectuerDemande']);
               }

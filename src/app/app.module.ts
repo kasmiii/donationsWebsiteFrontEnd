@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
@@ -21,16 +21,22 @@ import { EspacedonateurComponent } from './espacedonateur/espacedonateur.compone
 import { MesDonationsComponent } from './mes-donations/mes-donations.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MenubarModule} from 'primeng/menubar';
-//import {MenuItem} from 'primeng/api';
-import { DemandesComponent } from './demandes/demandes.component';
+import {DemandesComponent } from './demandes/demandes.component';
 import {CommonModule} from '@angular/common';
-import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
 import {CodeHighlighterModule} from 'primeng/codehighlighter';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {TieredMenuModule} from 'primeng/tieredmenu';
-import {MenuItem} from 'primeng/api';
+import {MenuItem, MessageService} from 'primeng/api';
+import {FieldsetModule} from 'primeng/fieldset';
+import {TabViewModule} from 'primeng/tabview';
+import {RadioButtonModule} from "primeng/radiobutton";
+import {InputTextModule} from 'primeng/inputtext';
+import {ToastModule} from "primeng/toast";
+import {MessageModule} from "primeng/message";
+import {PanelModule} from "primeng/panel";
+import {InputNumberModule} from 'primeng/inputnumber';
+
 
 @NgModule({
   declarations: [
@@ -68,9 +74,20 @@ import {MenuItem} from 'primeng/api';
     CodeHighlighterModule,
     TabMenuModule,
     TieredMenuModule,
+    FieldsetModule,
+    TabViewModule,
+    RadioButtonModule,
+    InputTextModule,
+    ToastModule,
+    MessageModule,
+    PanelModule,
+    ReactiveFormsModule,
+    InputNumberModule
+    //REACTIVE_FORM_DIRECTIVES
+    //DropdownModule
     //MenuItem
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
