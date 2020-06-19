@@ -22,7 +22,7 @@ export class EspaceDemandeurComponent implements OnInit {
       {
           label: 'mes demandes',
           icon: 'pi pi-fw pi-file',
-          routerLink: ['mesDamandes']
+          routerLink: ['mesDamandes',{cin:Global.cin}]
       },
       {
           label: 'effectuer demande',

@@ -18,6 +18,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { MesDonationsComponent } from './mes-donations/mes-donations.component';
 import { EspacedonateurComponent } from './espacedonateur/espacedonateur.component';
 import { DemandesComponent } from './demandes/demandes.component';
+import { DetailDemandeComponent } from './detail-demande/detail-demande.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,10 @@ const routes: Routes = [
       {
         path:'effectuerDemande',
         component:EffectuerdemandeComponent
+      },
+      {
+        path:'detailDemande',
+        component:DetailDemandeComponent
       }
       ],
       canActivate:[AuthGuardService]

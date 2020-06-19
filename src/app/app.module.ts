@@ -36,7 +36,9 @@ import {ToastModule} from "primeng/toast";
 import {MessageModule} from "primeng/message";
 import {PanelModule} from "primeng/panel";
 import {InputNumberModule} from 'primeng/inputnumber';
-
+import { DemandeItemComponent } from './demande-item/demande-item.component';
+import {CardModule} from 'primeng/card';
+import { DetailDemandeComponent } from './detail-demande/detail-demande.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import {InputNumberModule} from 'primeng/inputnumber';
     EffectuerdemandeComponent,
     EspacedonateurComponent,
     MesDonationsComponent,
-    DemandesComponent
+    DemandesComponent,
+    DemandeItemComponent,
+    DetailDemandeComponent
     
   ],
   imports: [
@@ -82,10 +86,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     MessageModule,
     PanelModule,
     ReactiveFormsModule,
-    InputNumberModule
-    //REACTIVE_FORM_DIRECTIVES
-    //DropdownModule
-    //MenuItem
+    InputNumberModule,
+    CardModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

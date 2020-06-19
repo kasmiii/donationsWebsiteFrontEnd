@@ -6,6 +6,7 @@ import { Global } from '../classes/global';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticationService {
 
   constructor() { }
