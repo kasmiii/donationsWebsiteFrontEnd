@@ -31,4 +31,8 @@ export class DemandeService {
   deleteDemandeById(id:string,type:string):Observable<Demande>{
     return this.http.get<Demande>(this.baseUrl+"/deleteDemande?id="+id+"&type="+type);
   }
+
+  getDetailDemande(id_demande:string,type_demande:string):Observable<DemandeInfo>{
+    return this.http.get<DemandeInfo>(this.baseUrl+"/detailDemande?id="+id_demande+"&type="+type_demande);    
+  }
 }

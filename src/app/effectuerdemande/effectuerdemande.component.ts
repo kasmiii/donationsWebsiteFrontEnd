@@ -75,7 +75,7 @@ export class EffectuerdemandeComponent implements OnInit {
    var today = new Date();
 
    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-   if(typeof form.value.quantity==='undefined') this.quantite=1;
+   if( form.value.quantity===0) this.quantite=1;
    
    else this.quantite=form.value.quantity;
    
@@ -102,7 +102,7 @@ export class EffectuerdemandeComponent implements OnInit {
   //console.log("l'objet envoye est : "+objet.mIdObjet);
   //console.log("la machine est : "+machine.mIdObjet);    
   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  if(typeof machineform.value.quantity==='undefined') this.quantite=1;
+  if(machineform.value.quantity===0) this.quantite=1;
    
   else this.quantite=machineform.value.quantity;
    
@@ -129,7 +129,7 @@ export class EffectuerdemandeComponent implements OnInit {
    let vetement=new Vetement(id_objet,vetementform.value.tailleVetement,vetementform.value.categorieVetement);
    var today = new Date();
    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-   if(typeof vetementform.value.quantity==='undefined') this.quantite=1;
+   if(vetementform.value.quantity===0) this.quantite=1;
    else this.quantite=vetementform.value.quantity;
    let demande=new Demande(Global.generateRandomString(7),date,'pas encore accepte',this.quantite,objet.mIdObjet,Global.cin); 
    let demandeInfo=new DemandeInfo('vetement',objet,null,vetement,null,demande);
