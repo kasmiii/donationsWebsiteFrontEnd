@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { DemandeInfo } from '../classes/demande-info';
 import { DemandeItem } from '../classes/demande-item';
 import { Demande } from '../classes/demande';
+import { Affectation } from '../classes/affectation';
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +41,11 @@ export class DemandeService {
     return this.http.get<Array<DemandeInfo>>(this.baseUrl+"/searchDemandes?keyword="+keyword);
   }
 
+  saveDonation(affectation:Affectation):Observable<Affectation>{
+
+    return this.http.post<Affectation>(this.baseUrl+"/saveDonation",affectation,{
+      responseType: 'json'
+    });
+
+  }
 }

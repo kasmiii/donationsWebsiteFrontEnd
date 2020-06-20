@@ -38,8 +38,11 @@ import {PanelModule} from "primeng/panel";
 import {InputNumberModule} from 'primeng/inputnumber';
 import { DemandeItemComponent } from './demande-item/demande-item.component';
 import {CardModule} from 'primeng/card';
+import { ToggleButtonModule } from "primeng/togglebutton";
 import { DetailDemandeComponent } from './detail-demande/detail-demande.component';
 import {ListboxModule} from 'primeng/listbox';
+import {PickListModule} from 'primeng/picklist';
+import {OrderListModule} from 'primeng/orderlist';
 
 @NgModule({
   declarations: [
@@ -89,7 +92,10 @@ import {ListboxModule} from 'primeng/listbox';
     ReactiveFormsModule,
     InputNumberModule,
     CardModule,
-    ListboxModule
+    ListboxModule,
+    ToggleButtonModule,
+    PickListModule,
+    OrderListModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

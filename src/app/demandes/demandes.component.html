@@ -48,9 +48,20 @@
                     <h5>Conact::{{demande.personne.mTelephone}}</h5>
                 </div>
             </div>
+            <form [formGroup]="donationForm"><!--(ngSubmit)="onSubmitDonation(formGroup)"-->
+                <label for="quantity"><h5>quantite:</h5></label>
+                <input type="number" id="quantity" formControlName="quantity"/>
+                <p-orderList [value]="depots" [listStyle]="{'height':'350px'}" header="Depots" filterBy="brand" filterPlaceholder="Filter by brand" dragdrop="true">
+                    <ng-template let-depot pTemplate="item">
+                        <div class="ui-helper-clearfix">
+                            <img src="./assets/img/depots/{{depot.brand}}.jpg" style="display:inline-block;margin:2px 0 2px 2px" width="48">
+                            <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{depot.nom}} - {{depot.adresse}}</div>
+                        </div>
+                    </ng-template>
+                </p-orderList>
+            </form>
             <p-footer>
-                <button pButton type="button" label="Modify" icon="pi pi-check" style="margin-right: .25em" [routerLink]="['../effectuerDemande']" routerLinkActive="router-link-active" ></button>
-                <button pButton type="button" label="Retour" icon="pi pi-times" class="ui-button-secondary" [routerLink]="['../mesDamandes']" routerLinkActive="router-link-active" ></button>
+                <p-toggleButton [(ngModel)]="buttonChecked" onLabel="I donate" offLabel="I cancel" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}" (click)="toggleClick(buttonChecked,demande,donationForm)"></p-toggleButton>
             </p-footer>
         </p-card>
 
