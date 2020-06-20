@@ -3,6 +3,7 @@ import { Machine } from './machine';
 import { Vetement } from './vetement';
 import { Livre } from './livre';
 import { Demande } from './demande';
+import { Personne } from './personne';
 
 export class DemandeInfo {
 
@@ -13,5 +14,6 @@ export class DemandeInfo {
     public  vetement:Vetement,
     public  livre:Livre,
     public demande:Demande,
+    public personne:Personne
     ){}
 }

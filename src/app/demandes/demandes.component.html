@@ -1,1 +1,59 @@
-<p>demandes works!</p>
+<div class="p-grid p-col-justify-center">
+    <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearchDemande(searchForm)">
+            <div class="form-row">
+                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                    <input pInputText class="form-control form-control-lg" type="text" formControlName="keyword" placeholder="Enter your serach keyword...">
+                </div>
+                <div class="col-12 col-md-3">
+                    <button class="btn btn-primary btn-block btn-lg" type="submit" >Search</button>
+                </div>
+            </div><br>
+        </form>
+    </div>
+    <br>
+    <div *ngIf="this.list.length!==0">    
+        
+        <div *ngFor="let demande of this.list">
+        <p-card header="Id Demande :: {{demande.demande.mIdDemande}}" [subheader]="type" [style]="{width: '700px'}" styleClass="ui-card-shadow">
+            <p-header>
+                <img src="Card" src="./assets/img/donation.jpeg" height="500px" width="250px">
+            </p-header>
+            <div>
+                <h2>{{description}}</h2><br>
+                <div [ngSwitch]="demande.type">
+                    <div *ngSwitchCase="'machine'">
+                        <h3>Nom de la machine::{{demande.machine.nomMachine}}</h3><br>
+                        <h3>Type de la machine::{{demande.machine.typeMachine}}</h3><br>
+                    </div>
+                    <div *ngSwitchCase="'livre'">
+                        <h3>Titre du livre::{{demande.livre.mTitre}}</h3><br>
+                        <h3>Nom de l'auteur::{{demande.livre.mNomAuteur}}</h3><br>
+                        <h3>Genre::{{demande.livre.mGenre}}</h3><br>
+                    </div>
+                    <div *ngSwitchCase="'vetement'">
+                        <h3>Taille::{{demande.vetement.mTaille}}</h3><br>
+                        <h3>Categorie::{{demande.vetement.mCategorie}}</h3><br>
+                    </div>
+                    <div *ngSwitchDefault>type of Object not Found!</div>
+                </div>
+                <!--<h5>Type de demande::{{type_demande}}</h5><br>-->
+                <br>
+                <div class="p-grid">
+                <h2><b>Demande le : {{demande.demande.mDateDemande}}</b></h2><br><!--[style]="{margin-right: 30px}"-->
+                <h2><b>Status ::{{demande.demande.mStatus}}</b></h2><br>
+                <h2>quantite::{{demande.demande.mQuantite}}</h2>
+                <h5>-------informations sur demandeur--------------- </h5><br>
+                    <h5>Nom Complet::{{demande.personne.mNom}} {{demande.personne.mPrenom}}</h5>
+                    <h5>Conact::{{demande.personne.mTelephone}}</h5>
+                </div>
+            </div>
+            <p-footer>
+                <button pButton type="button" label="Modify" icon="pi pi-check" style="margin-right: .25em" [routerLink]="['../effectuerDemande']" routerLinkActive="router-link-active" ></button>
+                <button pButton type="button" label="Retour" icon="pi pi-times" class="ui-button-secondary" [routerLink]="['../mesDamandes']" routerLinkActive="router-link-active" ></button>
+            </p-footer>
+        </p-card>
+
+        </div>
+    </div>
+</div>

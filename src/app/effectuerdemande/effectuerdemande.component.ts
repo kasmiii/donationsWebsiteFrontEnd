@@ -7,7 +7,6 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import { Objet } from '../classes/objet';
 import { Livre } from '../classes/livre';
 import { Demande } from '../classes/demande';
-import { PersonneService } from '../services/perseonne.service';
 import { DemandeService } from '../services/demande.service';
 import { DemandeInfo } from '../classes/demande-info';
 import { Machine } from '../classes/machine';
@@ -25,7 +24,6 @@ export class EffectuerdemandeComponent implements OnInit {
   isAssociator=Global.isAssociator;
   libelleAssociation=Global.libelleAssociation;
   public quantite:number;
-  //quantity:number=1;
   typesmachines:string[]=['electronique','electrique','thermique','electromagnetique'];
   categories:string[]=['roman','cv','documentation','enfant','historique'];
   sizes:string[]=['S','M','L','XL','XXL'];
@@ -80,16 +78,16 @@ export class EffectuerdemandeComponent implements OnInit {
    else this.quantite=form.value.quantity;
    
    let demande=new Demande(Global.generateRandomString(7),date,'pas encore accepte',this.quantite,objet.mIdObjet,Global.cin); 
-   let demandeInfo=new DemandeInfo('livre',objet,null,null,livre,demande);
+   let demandeInfo=new DemandeInfo('livre',objet,null,null,livre,demande,null);
    this.demandeService.saveDemande(demandeInfo).subscribe(
     (data)=>{
       console.log("type ob object registred is "+data.type);
     }
   );
-   this.submitted = true;
+     this.submitted = true;
     
      this.messageService.add({severity:'info', summary:'Success', detail:'demande de livre Enregistre !'});
-    this.router.navigate(['/espaceDemandeur/mesDamandes',{cin:Global.cin}]);
+     this.router.navigate(['/espaceDemandeur/mesDamandes',{cin:Global.cin}]);
      //console.log("value of form recovered is: "+form.value.categorielivre);
     //console.log("livre input is:"+form.value);
   }
@@ -107,7 +105,7 @@ export class EffectuerdemandeComponent implements OnInit {
   else this.quantite=machineform.value.quantity;
    
   let demande=new Demande(Global.generateRandomString(7),date,'pas encore accepte',this.quantite,objet.mIdObjet,Global.cin); 
-  let demandeInfo=new DemandeInfo('machine',objet,machine,null,null,demande);
+  let demandeInfo=new DemandeInfo('machine',objet,machine,null,null,demande,null);
   //console.log("demande est : "+demande.mIdObjet);
   //console.log("demande info est : "+demandeInfo.objet.mIdObjet);
    
@@ -132,8 +130,14 @@ export class EffectuerdemandeComponent implements OnInit {
    if(vetementform.value.quantity===0) this.quantite=1;
    else this.quantite=vetementform.value.quantity;
    let demande=new Demande(Global.generateRandomString(7),date,'pas encore accepte',this.quantite,objet.mIdObjet,Global.cin); 
-   let demandeInfo=new DemandeInfo('vetement',objet,null,vetement,null,demande);
+   let demandeInfo=new DemandeInfo('vetement',objet,null,vetement,null,demande,null);
    
+   this.demandeService.saveDemande(demandeInfo).subscribe(
+    (data)=>{
+       //console.log("type ob object registred is "+data.type);
+    }
+  );
+  
    this.submitted=true;
    this.messageService.add({severity:'info', summary:'Success', detail:'demande de vetement Enregistre !'});
    this.router.navigate(['/espaceDemandeur/mesDamandes',{cin:Global.cin}]);

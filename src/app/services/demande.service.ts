@@ -8,9 +8,9 @@ import { Demande } from '../classes/demande';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DemandeService {
 
-  //public cin:string;
   private baseUrl='http://localhost:9098';
 
   constructor(private http: HttpClient ) { }
@@ -35,4 +35,9 @@ export class DemandeService {
   getDetailDemande(id_demande:string,type_demande:string):Observable<DemandeInfo>{
     return this.http.get<DemandeInfo>(this.baseUrl+"/detailDemande?id="+id_demande+"&type="+type_demande);    
   }
+
+  getDemandesByKeyword(keyword:string):Observable<Array<DemandeInfo>>{
+    return this.http.get<Array<DemandeInfo>>(this.baseUrl+"/searchDemandes?keyword="+keyword);
+  }
+
 }

@@ -39,6 +39,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import { DemandeItemComponent } from './demande-item/demande-item.component';
 import {CardModule} from 'primeng/card';
 import { DetailDemandeComponent } from './detail-demande/detail-demande.component';
+import {ListboxModule} from 'primeng/listbox';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { DetailDemandeComponent } from './detail-demande/detail-demande.componen
     PanelModule,
     ReactiveFormsModule,
     InputNumberModule,
-    CardModule
+    CardModule,
+    ListboxModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
