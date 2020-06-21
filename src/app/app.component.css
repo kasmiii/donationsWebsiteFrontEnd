@@ -1,0 +1,30 @@
+  .page-footer.dark {
+    background-color: #77bee2;
+  }
+  
+  article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+  }
+  @media (min-width:576px) {
+    .col-sm-3 {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+  }
+  
+  
+  .page-footer .footer-copyright {
+    background-color: #fff;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+    margin-top: 50px;
+    border: 1px solid #ededed;
+  }
+  
+  
+  
+    

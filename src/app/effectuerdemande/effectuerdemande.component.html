@@ -1,20 +1,25 @@
-<h3>Demandez maintenant,Choisissez le type de l'objet que vous souhaitez demander !</h3>
+<h3  style="text-align: center;margin-top: 25px;">Demandez maintenant,Choisissez le type de l'objet que vous souhaitez demander !</h3>
+<div class="p-grid p-justify-center" style="margin-top: 30px;">
 <div class="p-formgroup-inline">
     <div class="p-field-checkbox">
         <input type="radio" name="type" value="livre"  inputId="livre" (click)="getTypeHandler($event)" selected="true"/>
-        <label for="livre">Livre</label>
+        <label for="livre"><b>Livre</b></label>
     </div>
     <div class="p-field-checkbox">
         <input type="radio" name="type" value="vetement"  inputId="vetement" (click)="getTypeHandler($event)"/>
-        <label for="vetement">Vetement</label>
+        <label for="vetement"><b>Vetement</b></label>
     </div>
     <div class="p-field-checkbox">
         <input type="radio" name="type" value="machine"  inputId="machine" (click)="getTypeHandler($event)"/>
-        <label for="machine">Machine</label>
+        <label for="machine"><b>Machine</b></label>
     </div>
 </div>
+</div>
+
+<div class="p-grid p-justify-center">
 <!-------------------------------------------Livre Formulaire--------------------------------->
-<div id="livreForm" >
+<div id="livreForm"  style="margin-top: 30px;" >
+    <div class="p-col-fixed" style="width:800px">
     <p-toast [style]="{marginTop: '80px'}"></p-toast>
 
 <form [formGroup]="livreform" (ngSubmit)="onSubmitLivre(livreform)" >
@@ -62,12 +67,15 @@
     </p-panel>
 </form>
 </div>
+</div>
 <!-----------------------------------machine Formulaire------------------------------->
 
-    <div id="machineForm" style="display: none;">
+<div id="machineForm" style="display: none;margin-top: 30px;">
+    <div class="p-col-fixed" style="width:800px">
+
     <p-toast [style]="{marginTop: '80px'}"></p-toast>
 
-<form [formGroup]="machineform" (ngSubmit)="onSubmitMachine(machineform)" >
+    <form [formGroup]="machineform" (ngSubmit)="onSubmitMachine(machineform)" >
     <p-panel header="Machine">
         <div class="p-fluid forms-grid" style="margin: 1em 0">
             <div>
@@ -106,12 +114,14 @@
     </p-panel>
 </form>
 </div>
+</div>
 
 <!----------------------------------vetement Formulaire---------------------------------------->
-<div id="vetementForm" style="display: none;">
+<div id="vetementForm" style="display: none;margin-top: 30px;">
+    <div class="p-col-fixed" style="width:800px">
     <p-toast [style]="{marginTop: '80px'}"></p-toast>
 
-<form [formGroup]="vetementform" (ngSubmit)="onSubmitVetement(vetementform)" >
+    <form [formGroup]="vetementform" (ngSubmit)="onSubmitVetement(vetementform)" >
     <p-panel header="Vetement">
         <div class="p-fluid forms-grid" style="margin: 1em 0">
             <div>
@@ -149,5 +159,8 @@
             </div>
         </div>
     </p-panel>
-</form>
+    </form>
+</div>
+</div>
+
 </div>

@@ -1,10 +1,10 @@
 #signup-box {
-    max-width: 600px;
+    width: 800px;
     margin: 0 auto;
-    margin-top: 25px !important;
-    border-radius: 12px;
+    margin-top: 50px !important;
+    border-radius: 5px;
     overflow: hidden;
-    background: white;
+    background: rgb(118, 195, 240);
     -webkit-box-shadow: 0px 6px 30px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 6px 30px rgba(0,0,0,0.2);
     box-shadow: 0px 6px 30px rgba(0,0,0,0.2);
