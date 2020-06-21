@@ -27,7 +27,7 @@ import {ButtonModule} from 'primeng/button';
 import {CodeHighlighterModule} from 'primeng/codehighlighter';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {TieredMenuModule} from 'primeng/tieredmenu';
-import {MenuItem, MessageService} from 'primeng/api';
+import {MenuItem, MessageService, ConfirmationService} from 'primeng/api';
 import {FieldsetModule} from 'primeng/fieldset';
 import {TabViewModule} from 'primeng/tabview';
 import {RadioButtonModule} from "primeng/radiobutton";
@@ -43,6 +43,8 @@ import { DetailDemandeComponent } from './detail-demande/detail-demande.componen
 import {ListboxModule} from 'primeng/listbox';
 import {PickListModule} from 'primeng/picklist';
 import {OrderListModule} from 'primeng/orderlist';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+
 
 @NgModule({
   declarations: [
@@ -95,9 +97,10 @@ import {OrderListModule} from 'primeng/orderlist';
     ListboxModule,
     ToggleButtonModule,
     PickListModule,
-    OrderListModule
+    OrderListModule,
+    ConfirmDialogModule
   ],
-  providers: [MessageService],
+  providers: [MessageService,ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,51 @@
-<p>mes-donations works!</p>
+<h3>La liste des donations</h3>
+<div class="p-grid sample-layout p-justify-center">
+    <div class="p-col-12 p-md-2">
+        <h3><strong>Mes Donations</strong></h3>
+    </div><br>
+    <div class="p-col-12 p-col-nogutter">
+        <div class="p-col-12 p-col-nogutter">
+        
+        </div>
+        
+        <div class="p-col-12">
+            <div class="p-grid">
+                
+                    <div class="p-col-4" *ngFor="let donation of list_donations">
+                        <p-card header="id::{{donation.affectation.mIdAffectation}}" [subheader]="donation.objet.mTypeObjet" [style]="{width: '500px'}" styleClass="ui-card-shadow">
+                            <p-header>
+                                <img src="Card" src="./assets/img/donation2.jpg" height="250px" width="300px">
+                            </p-header>
+                            <div>
+                                <br>
+                                <div class="p-grid">
+                                <b>Accepte le</b> : {{donation.affectation.mDateAffectation}}<br><!--[style]="{margin-right: 30px}"-->
+                                {{donation.objet.mDescription}}<br>
+                                <b>Quantite donnee::</b>{{donation.affectation.mQuantiteDonnee}}<br>
+                                </div>
+                                <div class="p-grid">
+                                    <div class="p-col-12">
+                                        <b>--------informations sur le depot-------</b><br>
+                                        <b>nom depot</b>::{{depot.nom}}<br>
+                                        <b>localisation</b>::{{depot.adresse}}
+                                    </div>
+                                </div>
+                                <div class="p-grid">
+                                    <div class="p-col-12">
+                                    <b>----informations sur le demandeur----</b><br>
+                                    <b>Nom Complet</b>::{{donation.personne.mNom}} {{donation.personne.mPrenom}}
+                                    <b>Contact</b>::{{donation.personne.mTelephone}} 
+                                    </div>
+                                </div>
+                            </div>
+                            <p-footer>
+                                <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+                                <button type="text" (click)="confirm()" pButton icon="pi pi-check" label="Cancel donation"></button>
+                               
+                            </p-footer>
+                        </p-card>
+                        <br>
+                    </div>          
+            </div>
+        </div>
+</div><br>

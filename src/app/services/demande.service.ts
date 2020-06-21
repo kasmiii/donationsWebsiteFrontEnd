@@ -5,6 +5,7 @@ import { DemandeInfo } from '../classes/demande-info';
 import { DemandeItem } from '../classes/demande-item';
 import { Demande } from '../classes/demande';
 import { Affectation } from '../classes/affectation';
+import { Donation } from '../classes/donation';
 
 @Injectable({
   providedIn: 'root'
@@ -42,10 +43,13 @@ export class DemandeService {
   }
 
   saveDonation(affectation:Affectation):Observable<Affectation>{
-
     return this.http.post<Affectation>(this.baseUrl+"/saveDonation",affectation,{
       responseType: 'json'
     });
-
   }
+
+  getDonations(cin:string):Observable<Array<Donation>>{
+    return this.http.get<Array<Donation>>(this.baseUrl+"/mesDonations?cin="+cin);
+  }
+  
 }
