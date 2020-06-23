@@ -11,28 +11,28 @@
         <div class="p-col-12">
             <div class="p-grid">
                 
-                    <div class="p-col-4" *ngFor="let donation of list_donations">
-                        <p-card header="id::{{donation.affectation.mIdAffectation}}" [subheader]="donation.objet.mTypeObjet" [style]="{width: '500px'}" styleClass="ui-card-shadow">
+                    <div class="p-col-6" *ngFor="let donation of list_donations">
+                       <!--d'ici--> <p-card header="id::{{donation.affectation.mIdAffectation}}" [subheader]="donation.objet.mTypeObjet" [style]="{width: '500px'}" styleClass="ui-card-shadow">
                             <p-header>
-                                <img src="Card" src="./assets/img/donation2.jpg" height="250px" width="300px">
+                                <img src="Card" src="./assets/img/donation2.jpg" height="300px" width="250px">
                             </p-header>
                             <div>
                                 <br>
-                                <div class="p-grid">
-                                <b>Accepte le</b> : {{donation.affectation.mDateAffectation}}<br><!--[style]="{margin-right: 30px}"-->
+                                <div class="p-grid ">
+                                <div class="p-col"><b>Accepte le</b> : {{donation.affectation.mDateAffectation}}</div><br><!--[style]="{margin-right: 30px}"-->
                                 {{donation.objet.mDescription}}<br>
-                                <b>Quantite donnee::</b>{{donation.affectation.mQuantiteDonnee}}<br>
+                                <div class="p-col"><b>Quantite donnee::</b>{{donation.affectation.mQuantiteDonnee}}</div><br>
                                 </div>
                                 <div class="p-grid">
                                     <div class="p-col-12">
-                                        <b>--------informations sur le depot-------</b><br>
+                                        <b style="color: skyblue;">------------informations sur le depot------------</b><br>
                                         <b>nom depot</b>::{{depot.nom}}<br>
                                         <b>localisation</b>::{{depot.adresse}}
                                     </div>
                                 </div>
                                 <div class="p-grid">
                                     <div class="p-col-12">
-                                    <b>----informations sur le demandeur----</b><br>
+                                    <b style="color: skyblue;">------------informations sur le demandeur------------</b><br>
                                     <b>Nom Complet</b>::{{donation.personne.mNom}} {{donation.personne.mPrenom}}
                                     <b>Contact</b>::{{donation.personne.mTelephone}} 
                                     </div>

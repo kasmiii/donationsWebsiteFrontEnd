@@ -1,4 +1,4 @@
-<div class="p-grid p-col-justify-center">
+<div class="p-grid ">
     <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
         <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearchDemande(searchForm)">
             <div class="form-row">
@@ -12,59 +12,66 @@
         </form>
     </div>
     <br>
-    <div *ngIf="this.list.length!==0">    
-        
-        <div *ngFor="let demande of this.list">
-        <p-card header="Id Demande :: {{demande.demande.mIdDemande}}" [subheader]="type" [style]="{width: '700px'}" styleClass="ui-card-shadow">
-            <p-header>
-                <img src="Card" src="./assets/img/donation.jpeg" height="500px" width="250px">
-            </p-header>
-            <div>
-                <h2>{{description}}</h2><br>
-                <div [ngSwitch]="demande.type">
-                    <div *ngSwitchCase="'machine'">
-                        <h3>Nom de la machine::{{demande.machine.nomMachine}}</h3><br>
-                        <h3>Type de la machine::{{demande.machine.typeMachine}}</h3><br>
-                    </div>
-                    <div *ngSwitchCase="'livre'">
-                        <h3>Titre du livre::{{demande.livre.mTitre}}</h3><br>
-                        <h3>Nom de l'auteur::{{demande.livre.mNomAuteur}}</h3><br>
-                        <h3>Genre::{{demande.livre.mGenre}}</h3><br>
-                    </div>
-                    <div *ngSwitchCase="'vetement'">
-                        <h3>Taille::{{demande.vetement.mTaille}}</h3><br>
-                        <h3>Categorie::{{demande.vetement.mCategorie}}</h3><br>
-                    </div>
-                    <div *ngSwitchDefault>type of Object not Found!</div>
-                </div>
-                <!--<h5>Type de demande::{{type_demande}}</h5><br>-->
-                <br>
-                <div class="p-grid">
-                <h2><b>Demande le : {{demande.demande.mDateDemande}}</b></h2><br><!--[style]="{margin-right: 30px}"-->
-                <h2><b>Status ::{{demande.demande.mStatus}}</b></h2><br>
-                <h2>quantite::{{demande.demande.mQuantite}}</h2>
-                <h5>-------informations sur demandeur--------------- </h5><br>
-                    <h5>Nom Complet::{{demande.personne.mNom}} {{demande.personne.mPrenom}}</h5>
-                    <h5>Conact::{{demande.personne.mTelephone}}</h5>
-                </div>
-            </div>
-            <form [formGroup]="donationForm"><!--(ngSubmit)="onSubmitDonation(formGroup)"-->
-                <label for="quantity"><h5>quantite:</h5></label>
-                <input type="number" id="quantity" formControlName="quantity"/>
-                <p-orderList [value]="depots" [listStyle]="{'height':'350px'}" header="Depots" filterBy="brand" filterPlaceholder="Filter by brand" dragdrop="true">
-                    <ng-template let-depot pTemplate="item">
-                        <div class="ui-helper-clearfix">
-                            <img src="./assets/img/depots/{{depot.brand}}.jpg" style="display:inline-block;margin:2px 0 2px 2px" width="48">
-                            <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{depot.nom}} - {{depot.adresse}}</div>
-                        </div>
-                    </ng-template>
-                </p-orderList>
-            </form>
-            <p-footer>
-                <p-toggleButton [(ngModel)]="buttonChecked" onLabel="I donate" offLabel="I cancel" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}" (click)="toggleClick(buttonChecked,demande,donationForm)"></p-toggleButton>
-            </p-footer>
-        </p-card>
 
+        
+    <!--<div  *ngIf="this.list.length!==0">  -->  
+        <div class="p-col-12">
+            <div class="p-grid">
+                <div class="p-col-6" *ngFor="let demande of this.list">
+                    <p-card header="id demande :: {{demande.demande.mIdDemande}}" [subheader]="type" [style]="{width: '500px'}" styleClass="ui-card-shadow">
+                        <p-header>
+                            <img src="Card" src="./assets/img/donation2.jpg" height="300px" width="250px">
+                        </p-header>
+                        <div>
+                            <p>{{description}}</p><br>
+                            <div [ngSwitch]="demande.type">
+                                <div *ngSwitchCase="'machine'">
+                                    <b>Nom de la machine</b>::{{demande.machine.nomMachine}}<br>
+                                    <b>Type de la machine</b>::{{demande.machine.typeMachine}}<br>
+                                </div>
+                                <div *ngSwitchCase="'livre'">
+                                    <b>Titre du livre::</b>{{demande.livre.mTitre}}<br>
+                                    <b>Nom de l'auteur::</b>{{demande.livre.mNomAuteur}}<br>
+                                    <b>Genre::</b>{{demande.livre.mGenre}}<br>
+                                </div>
+                                <div *ngSwitchCase="'vetement'">
+                                    <b>Taille::</b>{{demande.vetement.mTaille}}<br>
+                                    <b>Categorie::</b>{{demande.vetement.mCategorie}}<br>
+                                </div>
+                                <div *ngSwitchDefault>type of Object not Found!</div>
+                            </div>
+                            <!--<h5>Type de demande::{{type_demande}}</h5><br>-->
+                            <br>
+                            
+                            <b>Demande le : </b>{{demande.demande.mDateDemande}}<br><!--[style]="{margin-right: 30px}"-->
+                            <b>Status ::</b>{{demande.demande.mStatus}}<br>
+                            <b>quantite::</b>{{demande.demande.mQuantite+1}}<br>
+                            <b style="color: skyblue;">-------informations sur demandeur----------</b><br>
+                            <b>Nom Complet</b>::{{demande.personne.mNom}} {{demande.personne.mPrenom}}<br>
+                                <div class="p-grid">
+                                    <div class="p-col"> <b>Conact::</b>{{demande.personne.mTelephone}}</div>
+                                    <div class="p-col"><img src="./assets/img/user.png"></div>
+                                </div>
+                            
+                    </div>
+                    <form [formGroup]="donationForm"><!--(ngSubmit)="onSubmitDonation(formGroup)"-->
+                        <label for="quantity"><b>Quantite </b></label>
+                        <input type="number" id="quantity" formControlName="quantity"/>
+                        <p-orderList [value]="depots" [listStyle]="{'height':'250px'}" header="Depots" filterBy="brand" filterPlaceholder="Filter by brand" dragdrop="true">
+                            <ng-template let-depot pTemplate="item">
+                                <div class="ui-helper-clearfix">
+                                    <img src="./assets/img/depots/{{depot.brand}}.jpg" style="display:inline-block;margin:2px 0 2px 2px" width="48">
+                                    <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{depot.nom}} - {{depot.adresse}}</div>
+                                </div>
+                            </ng-template>
+                        </p-orderList>
+                    </form>
+                    <p-footer>
+                        <p-toggleButton [(ngModel)]="buttonChecked" onLabel="I donate" offLabel="I cancel" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}" (click)="toggleClick(buttonChecked,demande,donationForm)"></p-toggleButton>
+                    </p-footer>
+                </p-card>
+            </div>
         </div>
+
     </div>
 </div>

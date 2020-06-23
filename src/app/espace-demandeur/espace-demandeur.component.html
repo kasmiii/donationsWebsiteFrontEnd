@@ -1,11 +1,19 @@
 <div class="p-grid">
 
-    <div class="p-col-8">
+    <div class="p-col-9">
     <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
     </div>
 
-<div class="p-col-4">
-<button #btn type="button" pButton icon="pi pi-bars" [label]="username" (click)="menu.toggle($event)"></button>
+<div class="p-col-3">
+    <button type="button" class="btn btn-primary">
+        {{prenom}} {{nom}}
+    </button>
+      <!--<div class="chip chip-lg">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle" alt=""> Lara Lim
+      </div>-->
+      <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+    <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+<!--<button #btn type="button" pButton icon="pi pi-bars" [label]="username" (click)="menu.toggle($event)"></button>-->
 <p-tieredMenu #menu [model]="items1" [popup]="true"></p-tieredMenu>
 </div>
 

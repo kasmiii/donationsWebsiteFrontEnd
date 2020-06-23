@@ -1,16 +1,19 @@
-<p-card header="Id Demande::{{id_demande}}" [subheader]="type_demande" [style]="{width: '300px'}" styleClass="ui-card-shadow">
+<p-card header="id::{{id_demande}}" [subheader]="type_demande" [style]="{width: '380px'}" styleClass="ui-card-shadow">
     <p-header>
-        <img src="Card" src="./assets/img/donation.jpeg" height="300px" width="250px">
+        <img src="Card" src="./assets/img/donation-icon.png" height="180px" width="180px">
     </p-header>
     <div>
         <!--<h5>Type de demande::{{type_demande}}</h5><br>-->
         <br>
         <div class="p-grid">
-        <h5><b>Demande le : {{date}}</b></h5><br><!--[style]="{margin-right: 30px}"-->
-        <h5><b>Status ::{{status}}</b></h5>
+            <div class="p-col-12">
+                <b>Demande le</b> : {{date}}<br><!--[style]="{margin-right: 30px}"-->
+                <b>Status </b>::{{status}}
+            </div>    
         </div>
     </div>
     <p-footer>
+        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
         <button pButton type="button" label="See more" icon="pi pi-check" style="margin-right: .25em" [routerLink]="['../detailDemande',{id_demande:id_demande,type_demande:type_demande}]" routerLinkActive="router-link-active" ></button>
         <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary" (click)="deleteDemande(id_demande,type_demande)"></button>
     </p-footer>

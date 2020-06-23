@@ -19,6 +19,13 @@ export class AuthenticationService {
       Global.username=sessionStorage.getItem('username');
       sessionStorage.setItem('type',personne.mType);
       Global.type=sessionStorage.getItem('type');
+      sessionStorage.setItem('nom',personne.mNom);
+      Global.nom=sessionStorage.getItem('nom');
+      sessionStorage.setItem('prenom',personne.mPrenom);
+      Global.prenom=sessionStorage.getItem('prenom');
+      sessionStorage.setItem('image',personne.mImage);
+      Global.image=sessionStorage.getItem('image');
+
       if(personne.mAssociation!==null){
         sessionStorage.setItem('isAssociator','true');
         sessionStorage.setItem('libelleAssociation',personne.mAssociation.mLibelleAssociation);
@@ -47,9 +54,15 @@ export class AuthenticationService {
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('cin');
     sessionStorage.removeItem('type');
+    sessionStorage.removeItem('nom');
+    sessionStorage.removeItem('prenom');
+    sessionStorage.removeItem('image');
     Global.cin=null;
     Global.username=null;
     Global.type=null;
+    Global.nom=null;
+    Global.prenom=null;
+    Global.image=null;
   }
 
 }

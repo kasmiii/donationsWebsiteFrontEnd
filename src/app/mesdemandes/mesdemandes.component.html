@@ -1,9 +1,9 @@
 <h3>Mes Demandes</h3>
 <div class="p-grid sample-layout p-justify-center">
-    <div class="p-col-12 p-md-2">
+    <!--<div class="p-col-12 p-md-2">
         <h3><strong>Mes Demandes</strong></h3>
-    </div><br>
-    <div class="p-col-12 p-md-10  p-col-nogutter">
+    </div><br>-->
+    <div class="p-col-12 p-col-nogutter">
         <div class="p-col-12 p-col-nogutter">
         
         </div>
@@ -11,7 +11,7 @@
         <div class="p-col-12">
             <div class="p-grid">
                 
-                    <div class="p-col-12 p-md-4" *ngFor="let demande of listDemandes">
+                    <div class="p-col-4" *ngFor="let demande of listDemandes">
                     <app-demande-item
                         [id_demande]="demande.idDemande"
                         [date]="demande.dateDemande"

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {MenubarModule} from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
+import {MenuItem, Message, ConfirmationService} from 'primeng/api';
 import { Global } from '../classes/global';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-espacedonateur',
@@ -11,12 +13,17 @@ import { Global } from '../classes/global';
 
 export class EspacedonateurComponent implements OnInit {
 
+  msgs: Message[] = [];
   public username=Global.username;
+  public nom=Global.nom;
+  public prenom=Global.prenom; 
+  public image=Global.image;
+  //public username=Global.username;
   items: MenuItem[];
   items1:MenuItem[];
   activeItem: MenuItem;
   
-  constructor() { }
+  constructor(private confirmationService:ConfirmationService,private router:Router,private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
     this.items = [
@@ -31,17 +38,9 @@ export class EspacedonateurComponent implements OnInit {
           routerLink:['demandes']
       },
       {
-          label: 'Help',
-          icon: 'pi pi-fw pi-question',
-      },
-      {
-          label: 'Actions',
-          icon: 'pi pi-fw pi-cog'
-      },
-      {separator:true},
-      {
-          label: 'Quit', icon: 'pi pi-fw pi-times'
-      }
+          label: 'Notifications',
+          icon: 'pi pi-fw pi-notification',
+      }  
   ];
 
   this.items1=[
@@ -52,6 +51,23 @@ export class EspacedonateurComponent implements OnInit {
     }
   ];
   this.activeItem = this.items[0];
+  }
+
+  logout(){
+    this.confirmationService.confirm({
+      message: 'Are you sure to logout?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+          //this.
+          this.authenticationService.logOut();
+          this.router.navigate(['/donations/home']);
+          this.msgs = [{severity:'info', summary:'Confirmed', detail:'disconnected'}];
+      },
+      reject: () => {
+          this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
+      }
+  });
   }
 
 }

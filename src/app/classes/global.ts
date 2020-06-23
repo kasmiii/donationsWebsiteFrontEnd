@@ -5,6 +5,9 @@ export class Global {
     public static type:string;
     public static isAssociator:string;
     public static libelleAssociation:string;
+    public static nom:string;
+    public static prenom:string;
+    public static image:string;
 
     public static generateRandomString(length) {
         var result           = '';

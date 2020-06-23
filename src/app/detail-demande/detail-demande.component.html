@@ -1,45 +1,52 @@
-<h3>Details du demande selectionne:</h3><br>
 <br>
+<h5 style="margin-left: 20px;color:skyblue ;">Details du demande selectionne</h5>
 <div class="p-grid sample-layout p-justify-center">
     <div class="p-col-12 p-md-2">
-        <h3><strong>Details</strong></h3>
+        <!--<h3><strong>Details</strong></h3>-->
     </div><br>
-    <div class="p-col-12 p-md-10  p-col-nogutter">
+    <div class="p-col-12 p-col-nogutter">
         <div class="p-col-12 p-col-nogutter">
         
         </div>
-        
-        <div class="p-col-12">
+        <div class="p-grid p-justify-center">
+        <div class="p-col-8">
             <div class="p-grid">
                 
-                <p-card header="Id Demande :: {{id}}" [subheader]="type" [style]="{width: '700px'}" styleClass="ui-card-shadow">
+                <p-card header="id demande :: {{id}}" [subheader]="type" [style]="{width: '700px'}" styleClass="ui-card-shadow">
                     <p-header>
-                        <img src="Card" src="./assets/img/donation.jpeg" height="500px" width="250px">
+                        <img src="Card" src="./assets/img/don2.jpg" height="300px" width="180px">
                     </p-header>
                     <div>
-                        <h2>{{description}}</h2><br>
-                        <div [ngSwitch]="type">
+                        <br>
+                        <p>{{description}}</p><br>
+                        <div [ngSwitch]="type" class="p-grid">
                             <div *ngSwitchCase="'machine'">
-                                <h3>Nom de la machine::{{nomMachine}}</h3><br>
-                                <h3>Type de la machine::{{typeMachine}}</h3><br>
+                                <b>Nom de la machine</b>::{{nomMachine}}<br>
+                                <b>Type de la machine</b>::{{typeMachine}}<br>
                             </div>
                             <div *ngSwitchCase="'livre'">
-                                <h3>Titre du livre::{{titre}}</h3><br>
-                                <h3>Nom de l'auteur::{{nomAuteur}}</h3><br>
-                                <h3>Genre::{{genre}}</h3><br>
+                                <b>Titre du livre</b>::{{titre}}<br>
+                                <b>Nom de l'auteur</b>::{{nomAuteur}}<br>
+                                <b>Genre::{{genre}}</b><br>
                             </div>
                             <div *ngSwitchCase="'vetement'">
-                                <h3>Taille::{{taille}}</h3><br>
-                                <h3>Categorie::{{categorie}}</h3><br>
+                                <b>Taille::{{taille}}</b><br>
+                                <b>Categorie::{{categorie}}</b><br>
                             </div>
                             <div *ngSwitchDefault>type of Object not Found!</div>
                         </div>
                         <!--<h5>Type de demande::{{type_demande}}</h5><br>-->
                         <br>
                         <div class="p-grid">
-                        <h2><b>Demande le : {{date_demande}}</b></h2><br><!--[style]="{margin-right: 30px}"-->
-                        <h2><b>Status ::{{status}}</b></h2><br>
-                        <h2>quantite::{{quantity}}</h2>
+                            <div class="p-col">
+                            <b>Demande le : {{date_demande}}</b><br><!--[style]="{margin-right: 30px}"-->
+                            </div>
+                            <div class="p-col">
+                            <b>Status </b>::{{status}}<br>
+                            </div>
+                            <div class="p-col">
+                            <b>quantite</b>::{{quantity+1}}<br>
+                            </div>
                         </div>
                     </div>
                     <p-footer>
@@ -51,5 +58,6 @@
                 
 
             </div>
+        </div>
         </div>
 </div>
